@@ -1,0 +1,29 @@
+{
+  "queue_schema_version": "0.1",
+  "delivery_state": "pending",
+  "attempt_count": 0,
+  "last_attempt_wallclock": null,
+  "acknowledgement_id": null,
+  "acknowledged_wallclock": null,
+  "last_transport_error": null,
+  "event": {
+    "event_schema_version": "0.1.0",
+    "event_id": "SYNTHETIC-S001-E000042",
+    "participant_pseudonym": "SYNTHETIC-P001",
+    "session_id": "SYNTHETIC-S001",
+    "sequence_number": 42,
+    "event_type": "adaptation_decision",
+    "monotonic_ms": 84500,
+    "intervention_version": "core-dev-0.1",
+    "configuration_hash": "synthetic-config-hash",
+    "payload": {
+      "reason_code": "performance_below_with_sensory_load",
+      "proposed_action": "decrease_sensory",
+      "previous_cognitive_level": 2,
+      "previous_sensory_level": 1,
+      "applied_cognitive_level": 2,
+      "applied_sensory_level": 0,
+      "clipped": false
+    }
+  }
+}

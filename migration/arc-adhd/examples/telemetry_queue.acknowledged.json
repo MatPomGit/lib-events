@@ -1,0 +1,25 @@
+{
+  "queue_schema_version": "0.1",
+  "delivery_state": "acknowledged",
+  "attempt_count": 1,
+  "last_attempt_wallclock": "2026-09-28T00:00:00Z",
+  "acknowledgement_id": "ACK-SYNTHETIC-0001",
+  "acknowledged_wallclock": "2026-09-28T00:00:01Z",
+  "last_transport_error": null,
+  "event": {
+    "event_schema_version": "0.1.0",
+    "event_id": "SYNTHETIC-S001-E000043",
+    "participant_pseudonym": "SYNTHETIC-P001",
+    "session_id": "SYNTHETIC-S001",
+    "sequence_number": 43,
+    "event_type": "state_transition",
+    "monotonic_ms": 85000,
+    "intervention_version": "core-dev-0.1",
+    "configuration_hash": "synthetic-config-hash",
+    "payload": {
+      "from_state": "REGULATION_PAUSE",
+      "to_state": "ORIENT",
+      "transition_reason": "pause_complete"
+    }
+  }
+}

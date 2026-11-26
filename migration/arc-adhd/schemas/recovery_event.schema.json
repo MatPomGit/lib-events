@@ -1,0 +1,486 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://matpomgit.github.io/arc-adhd-game/schemas/recovery_event.schema.json",
+  "title": "ARC-ADHD recovery event",
+  "description": "Versioned ARC-ADHD challenge/recovery event with separate immediate eligibility reference and target-rule recovery reference, auditable timing eligibility, explicit recovery time origin, feature-model identity, censoring and measurement-context validity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "participant_pseudonym",
+    "study_arm",
+    "intervention_version",
+    "session_id",
+    "session_index",
+    "task_id",
+    "challenge_event_id",
+    "challenge_type",
+    "challenge_eligibility",
+    "target_rule_recovery_reference",
+    "challenge_onset_ms",
+    "cognitive_difficulty",
+    "sensory_load",
+    "recovery_parameters",
+    "recovery_measurement_context",
+    "recovery_measurement_context_unchanged",
+    "recovery_data_valid",
+    "invalid_reason",
+    "recovery_feature_model_id",
+    "recovery_score_q",
+    "recovery_score_components",
+    "recovery_observed",
+    "recovery_monitoring_onset_ms",
+    "recovery_threshold_entry_ms",
+    "recovery_confirmation_ms",
+    "pre_monitoring_latency_ms",
+    "recovery_latency_ms",
+    "total_return_latency_ms",
+    "right_censored",
+    "telemetry_complete",
+    "safety_override"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.6.0"
+    },
+    "participant_pseudonym": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "study_arm": {
+      "type": "string",
+      "enum": [
+        "core",
+        "active_control",
+        "feasibility_unrandomized",
+        "other"
+      ]
+    },
+    "intervention_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "configuration_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_index": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trial_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "challenge_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "challenge_type": {
+      "type": "string",
+      "enum": [
+        "rule_switch",
+        "recoverable_error",
+        "temporary_interruption",
+        "unexpected_non_threatening_change",
+        "other_preregistered"
+      ]
+    },
+    "challenge_eligibility_rule_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "challenge_onset_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reference_window": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "start_ms",
+        "end_ms"
+      ],
+      "properties": {
+        "start_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "cognitive_difficulty": {
+      "type": "object"
+    },
+    "sensory_load": {
+      "type": "object"
+    },
+    "cue_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "explicit_child_input": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "recovery_parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definition_version",
+        "delta",
+        "stability_window_unit",
+        "stability_window_updates",
+        "latency_origin",
+        "censor_limit_ms"
+      ],
+      "properties": {
+        "definition_version": {
+          "type": "string"
+        },
+        "delta": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stability_window_unit": {
+          "type": "string",
+          "const": "score_updates"
+        },
+        "stability_window_updates": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latency_origin": {
+          "type": "string",
+          "const": "recovery_monitoring_onset"
+        },
+        "censor_limit_ms": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "recovery_measurement_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "context_version",
+        "context_hash",
+        "task_rule_id",
+        "cognitive_difficulty",
+        "sensory_load",
+        "response_window_ms",
+        "go_stimulus_id",
+        "stimulus_distribution_id",
+        "cue_condition"
+      ],
+      "properties": {
+        "context_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cognitive_difficulty": {
+          "type": "object"
+        },
+        "sensory_load": {
+          "type": "object"
+        },
+        "response_window_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "stimulus_distribution_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cue_condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "go_stimulus_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "recovery_measurement_context_unchanged": {
+      "type": "boolean"
+    },
+    "recovery_data_valid": {
+      "type": "boolean"
+    },
+    "invalid_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "measurement_context_changed",
+        "technical_missingness",
+        "participant_pause",
+        "safety_override",
+        "protocol_deviation",
+        "other_preregistered"
+      ]
+    },
+    "recovery_score_components": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "recovery_observed": {
+      "type": "boolean"
+    },
+    "recovery_latency_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "right_censored": {
+      "type": "boolean"
+    },
+    "censor_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "event_window_end",
+        "participant_stop",
+        "safety_stop",
+        "session_end",
+        "other_preregistered"
+      ]
+    },
+    "telemetry_complete": {
+      "type": "boolean"
+    },
+    "missingness_codes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "not_applicable",
+          "sensor_unavailable",
+          "tracking_failure",
+          "participant_skipped",
+          "safety_abort",
+          "software_error",
+          "session_terminated",
+          "unknown"
+        ]
+      }
+    },
+    "safety_override": {
+      "type": "boolean"
+    },
+    "controller_reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recovery_feature_model_id": {
+      "type": "string",
+      "enum": [
+        "B",
+        "B+S",
+        "B+V",
+        "B+S+V"
+      ]
+    },
+    "recovery_score_q": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 0
+    },
+    "recovery_monitoring_onset_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "recovery_threshold_entry_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "recovery_confirmation_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "pre_monitoring_latency_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "total_return_latency_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "challenge_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot_hash",
+        "core_eligible",
+        "timing_feature_eligible",
+        "timing_unavailability_reasons"
+      ],
+      "properties": {
+        "snapshot_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "core_eligible": {
+          "type": "boolean",
+          "const": true
+        },
+        "timing_feature_eligible": {
+          "type": "boolean"
+        },
+        "timing_unavailability_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "timing_profile_unqualified",
+              "target_rule_timing_reference_unavailable",
+              "timing_reference_rule_mismatch",
+              "timing_reference_go_stimulus_mismatch"
+            ]
+          }
+        }
+      }
+    },
+    "target_rule_recovery_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "reference_version",
+        "source_state",
+        "rule_id",
+        "go_stimulus_id",
+        "valid_trials",
+        "go_successes",
+        "go_total",
+        "nogo_successes",
+        "nogo_total",
+        "correct_go_rt_trials",
+        "timing_profile_id"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_state": {
+          "type": "string",
+          "const": "RULE_CALIBRATION"
+        },
+        "rule_id": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "go_stimulus_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valid_trials": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "go_successes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "go_total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "nogo_successes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nogo_total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "correct_go_rt_trials": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timing_profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
