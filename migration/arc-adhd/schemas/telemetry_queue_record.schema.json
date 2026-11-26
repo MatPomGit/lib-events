@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://matpomgit.github.io/arc-adhd-game/schemas/telemetry_queue_record.schema.json",
+  "title": "ARC-ADHD telemetry queue record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "queue_schema_version",
+    "delivery_state",
+    "attempt_count",
+    "event"
+  ],
+  "properties": {
+    "queue_schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "delivery_state": {
+      "type": "string",
+      "enum": ["pending", "in_flight", "acknowledged", "blocked"]
+    },
+    "attempt_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_attempt_wallclock": {
+      "type": ["string", "null"]
+    },
+    "acknowledgement_id": {
+      "type": ["string", "null"]
+    },
+    "acknowledged_wallclock": {
+      "type": ["string", "null"]
+    },
+    "last_transport_error": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "network_unavailable",
+        "timeout",
+        "server_unavailable",
+        "authentication_failure",
+        "payload_rejected",
+        "schema_mismatch",
+        "integrity_conflict",
+        "local_storage_failure",
+        "unknown_transport_error"
+      ]
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_schema_version",
+        "event_id",
+        "participant_pseudonym",
+        "session_id",
+        "sequence_number",
+        "event_type",
+        "monotonic_ms",
+        "intervention_version",
+        "configuration_hash",
+        "payload"
+      ],
+      "properties": {
+        "event_schema_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "participant_pseudonym": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sequence_number": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "monotonic_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "intervention_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

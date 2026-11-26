@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.6.0",
+  "participant_pseudonym": "SYNTHETIC-P002",
+  "study_arm": "feasibility_unrandomized",
+  "intervention_version": "core-dev-0.6",
+  "configuration_hash": "synthetic-config-hash",
+  "session_id": "SYNTHETIC-S002",
+  "session_index": 1,
+  "task_id": "signal-gate",
+  "trial_id": "trial-057",
+  "challenge_event_id": "challenge-004",
+  "challenge_type": "rule_switch",
+  "challenge_eligibility_rule_version": "phase0-rule-switch-0.2",
+  "challenge_onset_ms": 92000,
+  "reference_window": {
+    "start_ms": 76000,
+    "end_ms": 91000
+  },
+  "cognitive_difficulty": {
+    "target_probability_level": 1,
+    "distractor_similarity_level": 0,
+    "response_window_ms_level": 0
+  },
+  "sensory_load": {
+    "audio": true,
+    "haptics": false
+  },
+  "cue_condition": "visual_plus_audio",
+  "explicit_child_input": {
+    "difficulty": "acceptable"
+  },
+  "recovery_parameters": {
+    "definition_version": "candidate-0.4",
+    "delta": 0.5,
+    "stability_window_unit": "score_updates",
+    "stability_window_updates": 3,
+    "latency_origin": "recovery_monitoring_onset",
+    "censor_limit_ms": 20000
+  },
+  "recovery_measurement_context": {
+    "context_version": "candidate-0.1",
+    "context_hash": "synthetic-recovery-context-002",
+    "task_rule_id": "B",
+    "cognitive_difficulty": {
+      "target_probability_level": 1,
+      "distractor_similarity_level": 0,
+      "response_window_ms_level": 0
+    },
+    "sensory_load": {
+      "audio": true,
+      "haptics": false
+    },
+    "response_window_ms": 1500,
+    "stimulus_distribution_id": "signal-gate-color-v0",
+    "cue_condition": "visual_plus_audio",
+    "go_stimulus_id": "orange"
+  },
+  "recovery_measurement_context_unchanged": true,
+  "recovery_data_valid": true,
+  "invalid_reason": null,
+  "recovery_score_components": {
+    "balanced_rule_success": 1.2,
+    "correct_go_rt_slowing": 0.8,
+    "correct_go_rt_variability_increase": 0.6
+  },
+  "recovery_observed": false,
+  "recovery_latency_ms": null,
+  "right_censored": true,
+  "censor_reason": "event_window_end",
+  "telemetry_complete": true,
+  "missingness_codes": [],
+  "safety_override": false,
+  "controller_reason_codes": [
+    "recovery_not_observed"
+  ],
+  "recovery_feature_model_id": "B+S+V",
+  "recovery_score_q": -0.95,
+  "recovery_monitoring_onset_ms": 101000,
+  "pre_monitoring_latency_ms": 9000,
+  "recovery_threshold_entry_ms": null,
+  "recovery_confirmation_ms": null,
+  "total_return_latency_ms": null,
+  "challenge_eligibility": {
+    "snapshot_hash": "synthetic-eligibility-challenge-004",
+    "core_eligible": true,
+    "timing_feature_eligible": true,
+    "timing_unavailability_reasons": []
+  },
+  "target_rule_recovery_reference": {
+    "reference_id": "timing-ref-SYNTHETIC-S002-B",
+    "reference_version": "target-rule-recovery-ref-0.2",
+    "source_state": "RULE_CALIBRATION",
+    "rule_id": "B",
+    "go_stimulus_id": "orange",
+    "valid_trials": 12,
+    "go_successes": 5,
+    "go_total": 6,
+    "nogo_successes": 5,
+    "nogo_total": 6,
+    "correct_go_rt_trials": 4,
+    "timing_profile_id": "synthetic-timing-profile-01"
+  }
+}
