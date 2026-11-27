@@ -1,9 +1,3 @@
-# Macierz zgodności
+# Compatibility
 
-Dokumentuj tylko testy **rzeczywiście wykonane**. Rozdziel `SUPPORTED`, `EXPERIMENTAL`, `UNSUPPORTED`, `NOT_RUN`.
-
-| Środowisko | Wersja | Test / artefakt | Status |
-| --- | --- | --- | --- |
-| REPLACE_PLATFORM | REPLACE_VERSION | brak | NOT_RUN |
-
-Uwzględnij OS, runtime, urządzenie, GPU/CPU, Unity URP/HDRP, Web i Android, jeżeli dotyczą.
+Python 3.11 is the CI baseline. No third-party runtime dependencies. Other interpreters and consumer integration remain NOT_RUN. Experimental API version 0.1.0.

@@ -1,5 +1,5 @@
 # Only explicitly approved Pages sources, never internal docs/.
-site_name: "Biblioteka"
+site_name: "Event Validation and Delivery"
 docs_dir: pages
 site_dir: site
 theme:
