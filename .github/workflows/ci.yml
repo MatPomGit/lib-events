@@ -45,6 +45,10 @@ jobs:
         run: python scripts/validate_documentation.py
       - name: Check isolated public Pages
         run: python scripts/validate_pages.py
+      - name: Install local package and verify imports
+        run: |
+          python -m pip install .
+          python -c 'from lib_events import validate_schema_subset, validate_delivery, validate_event_identity_consistency'
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
       - name: Build and inspect approved Pages (never deploy)
